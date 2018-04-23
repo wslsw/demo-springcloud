@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	  <meta charset="utf-8"/>
+	  <title>修改用户</title>
+	  <meta name="renderer" content="webkit"/>
+	  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+	  <link rel="stylesheet" href="../static/plugins/layui/css/layui.css" th:href="@{${ctx}+'/static/plugins/layui/css/layui.css'}" />
+	</head>
+	<body>  
+		<form class="layui-form" action="" style="padding:10px;">
+		  <input name="id" class="layui-input" type="hidden" th:value="${user.id}"/>
+		  <div class="layui-form-item">
+		    <div class="layui-inline">
+		      <label class="layui-form-label"><font style="color:red;">*</font>姓名</label>
+		      <div class="layui-input-inline">
+		        <input name="name" lay-verify="required" autocomplete="off" class="layui-input" type="text" th:value="${user.name}"/>
+		      </div>
+		    </div>
+		    <div class="layui-inline">
+		      <label class="layui-form-label">性别</label>
+	          <div class="layui-input-block" th:if="${user.sex eq 1}">
+		        <input name="sex" value="1" title="男" checked="" type="radio"/>
+		        <input name="sex" value="2" title="女" type="radio"/>
+		      </div>
+		      <div class="layui-input-block" th:if="${user.sex eq 2}">
+		        <input name="sex" value="1" title="男" type="radio"/>
+		        <input name="sex" value="2" title="女" checked="" type="radio"/>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="layui-form-item">
+		    <div class="layui-inline">
+		      <label class="layui-form-label"><font style="color:red;">*</font>账号</label>
+		      <div class="layui-input-inline">
+		        <input name="account" lay-verify="required" autocomplete="off" class="layui-input" type="text" disabled="" th:value="${user.account}"/>
+		      </div>
+		    </div>
+		    <div class="layui-inline">
+		      <label class="layui-form-label"><font style="color:red;">*</font>密码</label>
+		      <div class="layui-input-inline">
+		        <input name="password" lay-verify="required" autocomplete="off" class="layui-input" type="password" th:value="${user.password}"/>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="layui-form-item">
+		    <div class="layui-inline">
+		      <label class="layui-form-label">生日</label>
+		      <div class="layui-input-inline" th:if="${user.birthday eq null}">
+		        <input name="birthday" id="birthday" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" type="text" />
+		      </div>
+		      <div class="layui-input-inline" th:if="!${user.birthday eq null}">
+		        <input name="birthday" id="birthday" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" type="text" th:value="${#dates.format(user.birthday,'yyyy-MM-dd')}" />
+		      </div>
+		    </div>
+		    <div class="layui-inline">
+		      <label class="layui-form-label">邮箱</label>
+		      <div class="layui-input-inline">
+		        <input name="email" autocomplete="off" class="layui-input" type="text" th:value="${user.email}"/>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="layui-form-item">
+		    <div class="layui-inline">
+		      <label class="layui-form-label">联系方式</label>
+		      <div class="layui-input-inline">
+		        <input name="phone" autocomplete="off" class="layui-input" type="text" th:value="${user.phone}"/>
+		      </div>
+		    </div>
+		    <div class="layui-inline">
+		      <label class="layui-form-label">状态</label>
+			  <div class="layui-input-block" th:if="${user.status eq 1}">
+		        <input name="status" value="1" title="启用" checked="" type="radio"/>
+		        <input name="status" value="2" title="冻结" type="radio"/>
+		        <input name="status" value="3" title="删除" type="radio"/>
+		      </div>
+		      <div class="layui-input-block" th:if="${user.status eq 2}">
+		        <input name="status" value="1" title="启用" type="radio"/>
+		        <input name="status" value="2" title="冻结" checked="" type="radio"/>
+		        <input name="status" value="3" title="删除" type="radio"/>
+		      </div>
+		      <div class="layui-input-block" th:if="${user.status eq 3}">
+		        <input name="status" value="1" title="启用" type="radio"/>
+		        <input name="status" value="2" title="冻结" type="radio"/>
+		        <input name="status" value="3" title="删除" checked="" type="radio"/>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="layui-form-item layui-form-text">
+		    <label class="layui-form-label">备注</label>
+		    <div class="layui-input-block">
+		      <textarea name="remark" class="layui-textarea" style="width:515px;" th:text="${user.remark}"></textarea>
+		    </div>
+		  </div>
+		  <div class="layui-form-item">
+		    <div class="layui-input-block">
+		      <button class="layui-btn" lay-submit="" lay-filter="save">保存</button>
+		      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+		    </div>
+		  </div>
+		</form>
+		<script src="../static/assets/js/jquery-1.8.3.min.js" th:src="@{${ctx}+'/static/assets/js/jquery-1.8.3.min.js'}"></script>
+		<script src="../static/assets/js/common.js" th:src="@{${ctx}+'/static/assets/js/common.js'}"></script>
+		<script src="../static/plugins/layui/layui.js" th:src="@{${ctx}+'/static/plugins/layui/layui.js'}"></script>
+		<script src="../static/assets/js/user_edit.js" th:src="@{${ctx}+'/static/assets/js/user_edit.js'}"></script>
+	</body>
+</html>

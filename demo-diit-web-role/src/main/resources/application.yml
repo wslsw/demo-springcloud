@@ -1,0 +1,11 @@
+# swagger2
+swagger2.package: com.diit.web.role.controller
+
+#配置模板
+spring:
+  thymeleaf:
+    cache: false
+    mode: HTML5
+
+# 代理名称(配合zuul使用-----api-role)
+proxy_name: 'api-role'

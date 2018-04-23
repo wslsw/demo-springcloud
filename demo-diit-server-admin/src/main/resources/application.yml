@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: server-admin
+  boot:
+    admin:
+      turbine:
+        location: http://localhost:8506
+        clusters: default
+      routes:
+        endpoints: env,metrics,trace,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,loggers,auditevents,hystrix.stream,turbine.stream
+
+server:
+  port: 8505
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8501/eureka/
+  instance:
+    hostname: admin
+    prefer-ip-address: true
+
+management:
+  security:
+    enabled: false

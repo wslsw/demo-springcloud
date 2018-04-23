@@ -1,0 +1,42 @@
+server:
+  port: 8080
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8501/eureka/
+
+spring:
+  application:
+    name: server-zuul
+  zipkin:
+    base-url: http://localhost:8504
+  sleuth:
+    sampler:
+      percentage: 1.0
+
+zuul:
+  sensitiveHeaders: 
+  routes:
+    api-portal:
+      path: /api-portal/**
+      serviceId: web-portal
+    api-user:
+      path: /api-user/**
+      serviceId: web-user
+    api-role:
+      path: /api-role/**
+      serviceId: web-role
+  ribbon:
+    eager-load:
+      enabled: true
+  host:  
+    socket-timeout-millis: 10000  
+    connect-timeout-millis: 10000
+
+ribbon:
+  eager-load:
+    enabled: true
+    clients: server-zuul
+  ConnectTimeout: 10000 #默认2s
+  ReadTimeout: 10000 #默认5s

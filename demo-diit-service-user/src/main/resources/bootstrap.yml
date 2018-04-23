@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: service-user
+  zipkin:
+    base-url: http://localhost:8504
+  sleuth:
+    sampler:
+      percentage: 1.0
+
+security.basic.enabled: false
+
+server:
+  port: 8102
+
+management:
+  security:
+    enabled: false
+
+eureka:
+  instance:
+    status-page-url: http://localhost:${server.port}/swagger-ui.html # ${server.port}为该服务的端口号
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8501/eureka/
+      
+feign:
+  hystrix:
+    enabled: true
+    
+#避免第一次调用失败
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000

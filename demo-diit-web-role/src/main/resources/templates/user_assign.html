@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	  <meta charset="utf-8"/>
+	  <title>用户列表</title>
+	  <meta name="renderer" content="webkit"/>
+	  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+	  <link rel="stylesheet" href="../static/plugins/layui/css/layui.css" th:href="@{${ctx}+'/static/plugins/layui/css/layui.css'}" />
+	</head>
+	<body style="padding-top:10px;">  
+		<div class="layui-btn-group tlUser">
+		  <button class="layui-btn" data-type="ok">确定</button>
+		  <button class="layui-btn" data-type="cancel">取消</button>
+		</div>
+		<table class="layui-table" lay-data="{height: 'full-70', cellMinWidth: 80, page: true, limit:10, url:'/api-role/role/listUsers', id:'tbUser'}">
+		  <thead>
+		    <tr>
+		      <th lay-data="{type:'checkbox'}"></th>
+		      <th lay-data="{field:'id', width:100, sort: true}">ID</th>
+		      <th lay-data="{field:'name', minwidth:100}">用户名</th>
+		      <th lay-data="{field:'account', minwidth:200}">登录用户名</th>
+		    </tr>
+		  </thead>
+		</table> 
+		<script src="../static/assets/js/jquery-1.8.3.min.js" th:src="@{${ctx}+'/static/assets/js/jquery-1.8.3.min.js'}"></script>
+		<script src="../static/plugins/layui/layui.js" th:src="@{${ctx}+'/static/plugins/layui/layui.js'}"></script>
+		<script src="../static/assets/js/user_assign.js" th:src="@{${ctx}+'/static/assets/js/user_assign.js'}"></script>
+	</body>
+</html>

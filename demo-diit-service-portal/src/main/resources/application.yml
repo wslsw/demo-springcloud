@@ -1,0 +1,28 @@
+# swagger2
+swagger2.package: com.diit.service.portal
+
+# Redis
+redisKey:
+  # 缓存时间 默认半小时
+  expire_time: 1800
+  prefix:
+    # 用户登录信息前缀
+    user_session: 'USER_SESSION:'
+    # 验证码Redis前缀
+    verifycode: 'VERIFYCODE:'
+    # 号码code
+    mobile_login_code: 'MOBILE_LOGIN_CODE:'
+    
+login:
+  # 验证名
+  validation:
+    #登录名
+    ispinengaged: isPinEngaged
+    #邮箱
+    isemailengaged: isEmailEngaged
+    #手机
+    ismobileengaged: isMobileEngaged
+  # 推荐登录名后缀随机数取值范围
+  random_number: 50000
+  # 登录成功页面
+  success_url: http://localhost:8080/api-portal/index

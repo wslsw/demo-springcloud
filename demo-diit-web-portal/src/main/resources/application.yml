@@ -1,0 +1,25 @@
+# swagger2
+swagger2.package: com.diit.web.portal.controller
+
+#配置模板
+spring:
+  thymeleaf:
+    cache: false
+    mode: HTML5
+
+# Redis
+redisKey:
+  # 缓存时间
+  expire_time: 120
+  prefix:
+    # 验证码Redis前缀
+    verifycode: 'VERIFYCODE:'
+
+# 成功响应首页
+portal_path: '({"success":"http://localhost:8080/api-portal/index"})'
+# 登录页面
+login_path: 'http://localhost:8080/api-portal/to_login'
+# 加载用户首页
+home_name: 'api-user'
+# 代理名称(配合zuul使用-----api-portal)
+proxy_name: 'api-portal'

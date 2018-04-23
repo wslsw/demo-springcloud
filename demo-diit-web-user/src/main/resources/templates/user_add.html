@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+	  <meta charset="utf-8"/>
+	  <title>添加用户</title>
+	  <meta name="renderer" content="webkit"/>
+	  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+	  <link rel="stylesheet" href="../static/plugins/layui/css/layui.css" th:href="@{${ctx}+'/static/plugins/layui/css/layui.css'}" />
+	</head>
+	<body>  
+		<form class="layui-form" action="" style="padding:10px;">
+		  <div class="layui-form-item">
+		    <div class="layui-inline">
+		      <label class="layui-form-label"><font style="color:red;">*</font>姓名</label>
+		      <div class="layui-input-inline">
+		        <input name="name" lay-verify="required" autocomplete="off" class="layui-input" type="text"/>
+		      </div>
+		    </div>
+		    <div class="layui-inline">
+		      <label class="layui-form-label">性别</label>
+	          <div class="layui-input-block">
+		        <input name="sex" value="1" title="男" checked="" type="radio"/>
+		        <input name="sex" value="2" title="女" type="radio"/>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="layui-form-item">
+		    <div class="layui-inline">
+		      <label class="layui-form-label"><font style="color:red;">*</font>账号</label>
+		      <div class="layui-input-inline">
+		        <input name="account" lay-verify="required" autocomplete="off" class="layui-input" type="text"/>
+		      </div>
+		    </div>
+		    <div class="layui-inline">
+		      <label class="layui-form-label"><font style="color:red;">*</font>密码</label>
+		      <div class="layui-input-inline">
+		        <input name="password" lay-verify="required" autocomplete="off" class="layui-input" type="password"/>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="layui-form-item">
+		    <div class="layui-inline">
+		      <label class="layui-form-label">生日</label>
+		      <div class="layui-input-inline">
+		        <input name="birthday" id="birthday" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input" type="text"/>
+		      </div>
+		    </div>
+		    <div class="layui-inline">
+		      <label class="layui-form-label">邮箱</label>
+		      <div class="layui-input-inline">
+		        <input name="email" autocomplete="off" class="layui-input" type="text"/>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="layui-form-item">
+		    <div class="layui-inline">
+		      <label class="layui-form-label">联系方式</label>
+		      <div class="layui-input-inline">
+		        <input name="phone" autocomplete="off" class="layui-input" type="text"/>
+		      </div>
+		    </div>
+		    <div class="layui-inline">
+		      <label class="layui-form-label">状态</label>
+			  <div class="layui-input-block">
+		        <input name="status" value="1" title="启用" checked="" type="radio"/>
+		        <input name="status" value="2" title="冻结" type="radio"/>
+		        <input name="status" value="3" title="删除" type="radio"/>
+		      </div>
+		    </div>
+		  </div>
+		  <div class="layui-form-item layui-form-text">
+		    <label class="layui-form-label">备注</label>
+		    <div class="layui-input-block">
+		      <textarea name="remark" class="layui-textarea" style="width:515px;"></textarea>
+		    </div>
+		  </div>
+		  <div class="layui-form-item">
+		    <div class="layui-input-block">
+		      <button class="layui-btn" lay-submit="" lay-filter="save">保存</button>
+		      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+		    </div>
+		  </div>
+		</form>
+		<script src="../static/assets/js/jquery-1.8.3.min.js" th:src="@{${ctx}+'/static/assets/js/jquery-1.8.3.min.js'}"></script>
+		<script src="../static/assets/js/common.js" th:src="@{${ctx}+'/static/assets/js/common.js'}"></script>
+		<script src="../static/plugins/layui/layui.js" th:src="@{${ctx}+'/static/plugins/layui/layui.js'}"></script>
+		<script src="../static/assets/js/user_add.js" th:src="@{${ctx}+'/static/assets/js/user_add.js'}"></script>
+	</body>
+</html>

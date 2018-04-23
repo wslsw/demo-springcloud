@@ -1,0 +1,49 @@
+spring:
+  application:
+    name: web-user
+  zipkin:
+    base-url: http://localhost:8504
+  sleuth:
+    sampler:
+      percentage: 1.0
+
+security.basic.enabled: false
+
+server:
+  port: 8202
+
+management:
+  security:
+    enabled: false
+
+eureka:
+  instance:
+    status-page-url: http://localhost:${server.port}/swagger-ui.html # ${server.port}为该服务的端口号
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8501/eureka/
+  
+feign:
+  hystrix:
+    enabled: true
+
+ribbon:
+  eager-load:
+    enabled: true
+    clients: web-user      
+#zuul:
+#  max:
+#    host:
+#      connections: 60000
+#  host:
+#    socket-timeout-millis: 60000
+#    connect-timeout-millis: 60000
+#    
+#ribbon:
+#  ConnectTimeout: 60000 #默认2s
+#  ReadTimeout: 60000 #默认5s
+#  OkToRetryOnAllOperations: true
+#  MaxAutoRetriesNextServer: 2
+#  MaxAutoRetries: 2
+#  eureka:
+#    enabled: true

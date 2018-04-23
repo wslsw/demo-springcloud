@@ -1,0 +1,71 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  
+  <artifactId>demo-diit-common</artifactId>
+  <groupId>com.diit</groupId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  
+  <name>demo-diit-common</name>
+  <description></description>
+  
+  <parent>
+    <groupId>com.diit</groupId>
+    <artifactId>demo-diit-springcloud</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+  </parent>
+  
+  <properties>
+  		<mapper.version>1.1.7</mapper.version>
+		<jedis.version>2.9.0</jedis.version>
+		<javax.servlet-api.version>3.1.0</javax.servlet-api.version>
+		<commons-lang3.version>3.7</commons-lang3.version>
+		<fastjson.version>1.2.44</fastjson.version>
+		<slf4j-api.version>1.7.25</slf4j-api.version>
+  </properties>
+  
+  <dependencies>
+  		<!--通用mapper-->
+		<dependency>
+			<groupId>tk.mybatis</groupId>
+			<artifactId>mapper-spring-boot-starter</artifactId>
+			<version>${mapper.version}</version>
+		</dependency>
+		
+  		<!--jedis-->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>${jedis.version}</version>
+		</dependency>
+		
+		<!--javax.servlet-api-->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${javax.servlet-api.version}</version>
+		</dependency>
+		
+		<!--commons-lang3-->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${commons-lang3.version}</version>
+		</dependency>
+		
+		<!--fastjson-->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+		</dependency>
+		
+		<!--slf4j-api-->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j-api.version}</version>
+		</dependency>
+		
+	</dependencies>
+</project>

@@ -1,0 +1,20 @@
+server:
+  port: 8502
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8501/eureka/
+
+spring:
+  application:
+    name: server-config
+  cloud:
+    config:
+      label: master
+      server:
+        git:
+          uri: https://github.com/wslsw/SpringCloudConfig/
+          username: 
+          password: 
+          search-paths: config

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<title>登录</title>
+	<!-- <link rel="icon" href="../static/assets/images/logo.png"/> -->
+	<link rel="stylesheet" href="../static/assets/css/login.css" th:href="@{${ctx}+'/static/assets/css/login.css'}" />
+</head>
+<body>
+	<div class="bj">
+		<img src="../static/assets/images/bj.png" th:src="@{${ctx}+'/static/assets/images/bj.png'}"/>
+	</div>
+	<div class="login-logo"><img src="../static/assets/images/login.png" th:src="@{${ctx}+'/static/assets/images/login.png'}"/></div>
+	<div class="login-title">微服务系统</div>
+	<div class="login-box">
+		<input type="text" id="username" tabindex="1" autocomplete="off" placeholder="请输入用户名"/>
+		<input type="password" id="password" tabindex="2" autocomplete="off" placeholder="请输入密码" class="itxt" />
+		<div class="bot">
+			<div class="form-group posf">
+				<label><i class="input_style checkbox_bg"><input type="checkbox" name="q" value=""/></i><span class="pass">记住我</span></label>
+				<a href="#">忘记密码?</a>
+			</div>
+		</div>
+		<button class="login">
+			<a href="javascript:void(0)">登&nbsp;录</a></button>
+	</div>
+	<script src="../static/assets/js/jquery-1.8.3.min.js" th:src="@{${ctx}+'/static/assets/js/jquery-1.8.3.min.js'}"></script>
+	<script src="../static/plugins/layer/layer.js" th:src="@{${ctx}+'/static/plugins/layer/layer.js'}"></script>
+	<script src="../static/assets/js/common.js" th:src="@{${ctx}+'/static/assets/js/common.js'}"></script>
+	<script src="../static/assets/js/login.js" th:src="@{${ctx}+'/static/assets/js/login.js'}"></script>
+</body>
+</html>

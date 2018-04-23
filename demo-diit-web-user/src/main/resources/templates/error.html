@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>出错啦</title>
+	<link rel="stylesheet" href="../css/404.css" th:href="@{${ctx}+'/css/404.css'}" />
+	<script src="../static/assets/js/jquery-1.8.3.min.js" th:src="@{${ctx}+'/static/assets/js/jquery-1.8.3.min.js'}"></script>
+	<script type="text/javascript">
+		$(function() {
+			var h = $(window).height();
+			$('body').height(h);
+			$('.mianBox').height(h);
+			centerWindow(".tipInfo");
+		});
+	
+		//2.将盒子方法放入这个方，方便法统一调用
+		function centerWindow(a) {
+			center(a);
+			//自适应窗口
+			$(window).bind('scroll resize',
+				function() {
+					center(a);
+				});
+		}
+	
+		//1.居中方法，传入需要剧中的标签
+		function center(a) {
+			var wWidth = $(window).width();
+			var wHeight = $(window).height();
+			var boxWidth = $(a).width();
+			var boxHeight = $(a).height();
+			var scrollTop = $(window).scrollTop();
+			var scrollLeft = $(window).scrollLeft();
+			var top = scrollTop + (wHeight - boxHeight) / 2;
+			var left = scrollLeft + (wWidth - boxWidth) / 2;
+			$(a).css({
+				"top": top,
+				"left": left
+			});
+		}
+	</script>
+</head>
+	<body style="height: 947px;">
+	<div class="mianBox" style="height: 947px;">
+		<img src="../static/images/yun0.png" alt="" class="yun yun0" th:src="@{${ctx}+'/static/images/yun0.png'}" / >
+		<img src="../static/images/yun1.png" alt="" class="yun yun1" th:src="@{${ctx}+'/static/images/yun1.png'}" />
+		<img src="../static/images/yun2.png" alt="" class="yun yun2" th:src="@{${ctx}+'/static/images/yun2.png'}" />
+		<img src="../static/images/bird.png" alt="" class="bird" th:src="@{${ctx}+'/static/images/bird.png'}" />
+		<img src="../static/images/san.png" alt="" class="san" th:src="@{${ctx}+'/static/images/san.png'}" />
+		<div class="tipInfo" style="top: 379px; left: 780px;">
+			<div class="in">
+				<div class="textThis">
+					<h2>出错啦404！</h2>
+					<p><span th:text="${msg}">请稍后重试!</span></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	</body>
+</html>
