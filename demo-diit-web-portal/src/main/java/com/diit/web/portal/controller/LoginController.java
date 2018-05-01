@@ -1,6 +1,7 @@
 package com.diit.web.portal.controller;
 
 import com.diit.common.utils.CookieUtils;
+import com.diit.common.utils.JedisClient;
 import com.diit.common.wrapper.BaseController;
 import com.diit.core.user.pojo.User;
 import com.diit.service.portal.LoginService;
@@ -39,6 +40,12 @@ public class LoginController extends BaseController {
     @Autowired
     private LoginService loginService;
 
+    @Autowired
+    private JedisClient jedisClient;
+
+    @Value("${redisKey.expire_time}")
+    private Integer EXPIRE_TIME;
+
     @Value("${proxy_name}")
     private String PROXY_NAME;
     
@@ -73,7 +80,8 @@ public class LoginController extends BaseController {
     
     @RequestMapping(value = "/index",method = RequestMethod.GET)
     public String index(Model model, HttpServletRequest request){
-    	String name = CookieUtils.getCookieValue(request, Const.USER_NAME);
+    	//String name = CookieUtils.getCookieValue(request, Const.USER_NAME);
+        String name = jedisClient.get(Const.USER_NAME);
     	model.addAttribute("name", name);
     	setCtx(model);
     	setHome(model);
@@ -83,7 +91,8 @@ public class LoginController extends BaseController {
     
     @RequestMapping(value = "/logout",method = RequestMethod.GET)
     public String logout(Model model, HttpServletRequest request, HttpServletResponse response){
-    	CookieUtils.deleteCookie(request, response, Const.TOKEN_LOGIN);
+    	//CookieUtils.deleteCookie(request, response, Const.TOKEN_LOGIN);
+        jedisClient.del(Const.TOKEN_LOGIN);
     	setCtx(model);
     	
         return "login";
@@ -122,9 +131,13 @@ public class LoginController extends BaseController {
     		logger.info("异常：" + e.getMessage());
     	}
         if (result!=null&&result.isSuccess()) {
-        	CookieUtils.setCookie(request, response, Const.TOKEN_LOGIN, result.getMessage()); 
-        	CookieUtils.setCookie(request, response, Const.USER_NAME, result.getData().toString());
+        	//CookieUtils.setCookie(request, response, Const.TOKEN_LOGIN, result.getMessage());
+        	//CookieUtils.setCookie(request, response, Const.USER_NAME, result.getData().toString());
         	//request.getSession().setAttribute("name",result.getData().toString());
+            jedisClient.set(Const.TOKEN_LOGIN, result.getMessage());
+            jedisClient.expire(Const.TOKEN_LOGIN, EXPIRE_TIME);
+            jedisClient.set(Const.USER_NAME, result.getData().toString());
+            jedisClient.expire(Const.USER_NAME, EXPIRE_TIME);
         	
             //有返回URL 跳转
             if (StringUtils.isNotBlank(returnUrl)) {

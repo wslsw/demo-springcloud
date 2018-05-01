@@ -10,7 +10,7 @@ spring:
 # Redis
 redisKey:
   # 缓存时间
-  expire_time: 120
+  expire_time: 3600
   prefix:
     # 验证码Redis前缀
     verifycode: 'VERIFYCODE:'
