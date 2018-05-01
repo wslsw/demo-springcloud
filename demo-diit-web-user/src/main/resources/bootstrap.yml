@@ -6,6 +6,19 @@ spring:
   sleuth:
     sampler:
       percentage: 1.0
+  cloud:
+    config:
+      label: master
+      profile: dev
+      discovery:
+        enabled: true
+        service-id: server-config
+      name: config-client
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
 security.basic.enabled: false
 

@@ -44,6 +44,9 @@ public class UserController {
     @Value("${proxy_name}")
     private String PROXY_NAME;
 
+	@Value("${version}")
+	private String VERSION;
+
     private void setCtx(Model model){
     	if(StringUtils.isEmpty(PROXY_NAME)){
     		model.addAttribute("ctx", "");
@@ -147,5 +150,13 @@ public class UserController {
 		return result;
 	}
 
+	/**
+	 * 获取git配置
+	 **/
+	@RequestMapping(value="/version")
+	@ResponseBody
+	public String version(){
+		return VERSION;
+	}
 
 }

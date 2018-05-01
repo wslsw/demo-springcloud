@@ -43,6 +43,9 @@ public class RoleController extends BaseController {
     @Value("${proxy_name}")
     private String PROXY_NAME;
 
+    @Value("${version}")
+    private String VERSION;
+
     private void setCtx(Model model){
     	if(StringUtils.isEmpty(PROXY_NAME)){
     		model.addAttribute("ctx", "");
@@ -163,5 +166,13 @@ public class RoleController extends BaseController {
 		return result;
 	}
 
+	/**
+	 * 获取git配置
+	 **/
+	@RequestMapping(value="/version")
+	@ResponseBody
+	public String version(){
+		return VERSION;
+	}
 
 }

@@ -1,7 +1,17 @@
-    项目是基于springboot1.5.10.RELEASE、springcloud Edgware.SR3构建的一个demo，在网关、服务注册中心基础上实现了基本的curd操作、调用链日志等服务治理功能。
+demo-springcloud
+    
+    项目是基于springboot1.5.10.RELEASE、springcloud Edgware.SR3构建的一个demo，
+    在网关、服务注册中心基础上实现了基本的curd操作、调用链日志等服务治理功能。
 
 本地运行环境：
-    ide需装好lombok插件，本地提前启动redis-server，加载代码后修改数据库配置为实际地址，maven运行生成jar包成功后，依次先启动服务server-euraka，再启动其它服务，顺序可以随意。
+
+    ide需装好lombok插件，本地提前启动redis-server，rabbitmq-server，
+    加载代码后修改数据库配置为实际地址，
+    maven运行生成jar包成功后，
+    依次先启动服务server-euraka，server-config，
+    再启动其它服务，顺序可以随意。
+    浏览器输入http://localhost:8080/api-portal或http://localhost:8080/api-portal/to_login，
+    登陆用户名/密码为admin/1
 
 ide工具
 
@@ -13,7 +23,7 @@ ide工具
     spring cloud turbine
     spring cloud eureka
     spring cloud sleuth/zipkin
-    spring cloud config
+    spring cloud config/bus
     spring cloud feign
     spring cloud zuul
     spring boot admin
@@ -22,6 +32,7 @@ ide工具
     druid
     mybatis/mapper
     mysql/oracle
+    rabbitmq
     redis
     lombok
     docker
