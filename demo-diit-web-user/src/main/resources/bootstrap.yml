@@ -14,11 +14,16 @@ spring:
         enabled: true
         service-id: server-config
       name: config-client
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
+    stream:
+      kafka:
+        binder:
+          zk-nodes: localhost:2181
+          brokers: localhost:9092
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: guest
+#    password: guest
 
 security.basic.enabled: false
 

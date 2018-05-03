@@ -18,11 +18,16 @@ spring:
           username: 
           password: 
           search-paths: config
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
+    stream:
+      kafka:
+        binder:
+          zk-nodes: localhost:2181
+          brokers: localhost:9092
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: guest
+#    password: guest
 
 management:
   security:

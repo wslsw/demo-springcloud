@@ -5,7 +5,7 @@ demo-springcloud
 
 本地运行环境：
 
-    ide需装好lombok插件，本地提前启动redis-server，rabbitmq-server，
+    ide需装好lombok插件，本地提前启动redis-server，zookeeper-server-start，kafka-server-start，
     加载代码后修改数据库配置为实际地址，
     maven运行生成jar包成功后，
     依次先启动服务server-euraka，server-config，
@@ -32,7 +32,7 @@ ide工具
     druid
     mybatis/mapper
     mysql/oracle
-    rabbitmq
+    rabbitmq/kafka
     redis
     lombok
     docker
